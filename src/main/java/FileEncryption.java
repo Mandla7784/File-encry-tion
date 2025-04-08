@@ -1,6 +1,5 @@
 package  main.java;
 
-
 /**
  * TODO:
     * Description: Created a program that encrypts and 
