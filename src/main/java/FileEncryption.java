@@ -1,5 +1,7 @@
 package  main.java;
 
+
+import java.io.File;;
 /**
  * TODO:
     * Description: Created a program that encrypts and 
@@ -17,7 +19,12 @@ class  FileEncryption{
            encryptFile("DemoFile");
     }
     static  void encryptFile(String filePath){
-
+        try {
+            File myObj  = new File(filePath);
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
 
