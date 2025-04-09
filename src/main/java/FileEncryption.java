@@ -1,11 +1,11 @@
 package  main.java;
 
-import java.security.KeyPair;
-import java.util.Scanner;
 import java.io.File;
-import java.security.Signature;
+import java.io.FileWriter;
+import java.security.KeyPair;
 import java.security.KeyPairGenerator;
-
+import java.security.Signature;
+import java.util.Scanner;
 import javax.crypto.Cipher;
 
 
@@ -24,6 +24,9 @@ import javax.crypto.Cipher;
 class  FileEncryption{
     public static void main(String[] args) throws Exception {
         Signature sign = Signature.getInstance("SHA256withRSA");
+        File file = new File("instructions.txt");
+        
+        FileWriter fw =new FileWriter(file);
 
          // Creating KeyPair generator object
          KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
@@ -43,8 +46,10 @@ class  FileEncryption{
           // enctrypting the data 
           byte[] cipherText = cipher.doFinal();
           System.out.println(new String(cipherText , "utf-8"));
+          fw.append(new String(cipherText , "utf-8"));
+          
 
-         ;
+    
     }
     static  String  encryptFile(String filePath){
 
