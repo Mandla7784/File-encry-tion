@@ -1,1 +1,2 @@
 https://www.youtube.com/watch?v=8wlE6DgOWBs
+https://stackoverflow.com/questions/49368594/encrypt-text-and-save-to-text-file-also-read-and-decrypt-java/49369349
