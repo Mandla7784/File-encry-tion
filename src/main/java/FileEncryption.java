@@ -1,6 +1,6 @@
 package  main.java;
 
-
+import java.util.Scanner;
 import java.io.File;;
 /**
  * TODO:
@@ -16,14 +16,19 @@ import java.io.File;;
  */
 class  FileEncryption{
     public static void main(String[] args) {
-           encryptFile("DemoFile");
+           encryptFile("instructions.txt");
     }
     static  void encryptFile(String filePath){
         try {
             File myObj  = new File(filePath);
-            
+             Scanner FileReader = new Scanner(myObj);
+             while(FileReader.hasNextLine()){
+                 String data = FileReader.nextLine();
+                 System.out.println(data);
+
+             }
         } catch (Exception e) {
-            // TODO: handle exception
+            
         }
     }
 }
