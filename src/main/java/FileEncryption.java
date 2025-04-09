@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.security.Signature;
 import java.security.KeyPairGenerator;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
 
 
 /**
@@ -25,21 +27,42 @@ class  FileEncryption{
 
          // Creating KeyPair generator object
          KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
-         
-           encryptFile("instructions.txt");
+          keyPairGen.initialize(2048); // init
+
+          KeyPair pair = keyPairGen.generateKeyPair();
+
+
+          // creating cypher object 
+          Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+
+       //Initializing a Cipher object
+       cipher.init(Cipher.ENCRYPT_MODE, pair.getPublic());
+          // adding data to the cypher
+          byte[] input =   encryptFile("instructions.txt").getBytes();
+
+          // enctrypting the data 
+          byte[] cipherText = cipher.doFinal();
+          System.out.println(new String(cipherText , "utf-8"));
+
+         ;
     }
-    static  void encryptFile(String filePath){
+    static  String  encryptFile(String filePath){
+
         try {
             File myObj  = new File(filePath);
              Scanner FileReader = new Scanner(myObj);
              while(FileReader.hasNextLine()){
                  String data = FileReader.nextLine();
                  System.out.println(data);
-
+            
              }
+         
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return filePath;
+  
+
     }
 }
 
