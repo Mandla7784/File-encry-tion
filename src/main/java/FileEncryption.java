@@ -1,8 +1,12 @@
 package  main.java;
 
+import java.security.KeyPair;
 import java.util.Scanner;
 import java.io.File;
 import java.security.Signature;
+import java.security.KeyPairGenerator;
+
+
 /**
  * TODO:
     * Description: Created a program that encrypts and 
@@ -16,7 +20,12 @@ import java.security.Signature;
     input/output operations.
  */
 class  FileEncryption{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Signature sign = Signature.getInstance("SHA256withRSA");
+
+         // Creating KeyPair generator object
+         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
+         
            encryptFile("instructions.txt");
     }
     static  void encryptFile(String filePath){
