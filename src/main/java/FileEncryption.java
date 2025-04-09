@@ -1,7 +1,8 @@
 package  main.java;
 
 import java.util.Scanner;
-import java.io.File;;
+import java.io.File;
+import java.security.Signature;
 /**
  * TODO:
     * Description: Created a program that encrypts and 
